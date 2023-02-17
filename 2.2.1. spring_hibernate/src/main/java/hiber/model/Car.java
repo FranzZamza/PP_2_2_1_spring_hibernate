@@ -6,16 +6,15 @@ import javax.persistence.*;
 @Table(name = "cars")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "car_id")
-    private Long carId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
     @Column(name = "series")
-    private int series;
+    private Integer series;
     @Column(name = "model")
     private String model;
 
     public Car() {
-
     }
 
     public Car(int series, String model) {
@@ -23,15 +22,19 @@ public class Car {
         this.model = model;
     }
 
-    public Long getCarId() {
-        return carId;
+    public void setSeries(Integer series) {
+        this.series = series;
     }
 
-    public void setCarId(Long carId) {
-        this.carId = carId;
+    public Long getId() {
+        return id;
     }
 
-    public int getSeries() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getSeries() {
         return series;
     }
 
@@ -47,4 +50,11 @@ public class Car {
         this.model = model;
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "series=" + series +
+                ", model='" + model + '\'' +
+                '}';
+    }
 }
